@@ -2,19 +2,19 @@
   <section class="galaxy__header">
     <div class="galaxy__header-planet">
       <p>Select 4 planets to search</p>
-      <h2>Planets Selected : {{planetSelectedCount}} / 4 </h2>
+      <h2>Planets Selected : {{selectedPlanetsCount}} / 4 </h2>
     </div>
-    <div *ngIf="planetSelectedCount === 4" class="galaxy__header-vehicle">
+    <div *ngIf="selectedPlanetsCount === 4" class="galaxy__header-vehicle">
       <p>Select the vehicle to respective planets by dragging and dropping</p>
-      <h2>Vehicles Selected : {{planetAssignedVehicles}} / 4</h2>
+      <h2>Vehicles Selected : {{selectedPlanetsCount}} / 4</h2>
     </div>
   </section>
 
   <section class="galaxy__planetsArea">
     <section class="galaxy__planetsArea__circle-container">
-      <section *ngIf="planetSelectedCount === 4" class="galaxy__planetsArea__circle-container__time">
+      <section *ngIf="selectedPlanetsCount === 4" class="galaxy__planetsArea__circle-container__time">
         <p>Time taken</p>
-        <p>{{timeToTravel}} hrs</p>
+        <p>{{timeTaken}} hrs</p>
       </section>
       <div *ngFor="let planet of planets" class="galaxy__planetsArea__planetsSection-planet"
            (click)="selectThisPlanet(planet)" [ngClass]="{'isSelected' : planet.isSelected}"
@@ -26,7 +26,7 @@
     </section>
   </section>
 
-  <section *ngIf="planetSelectedCount === 4" class="galaxy__vehiclesArea">
+  <section *ngIf="selectedPlanetsCount === 4" class="galaxy__vehiclesArea">
     <section class="galaxy__vehiclesArea__vehiclesSection">
       <div *ngFor="let vehicle of vehicles" class="galaxy__vehiclesArea__vehiclesSection-vehicle"
            [ngClass]="{'notAvailable' : !vehicle.isAvailable}">
@@ -49,7 +49,7 @@
 
       </div>
     </section>
-    <input *ngIf="planetSelectedCount === 4 && planetAssignedVehicles === 4"
+    <input *ngIf="selectedPlanetsCount === 4 && selectedPlanetsCount === 4"
            class="galaxy__vehiclesArea__vehiclesSection__button" type="button" value="Find Falcone"
            (click)="findFalcone()">
   </section>
